@@ -1,0 +1,149 @@
+.footer {
+    background: #1E293B;
+    color: white;
+    padding: 64px 48px 32px;
+}
+
+.footerContent {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+}
+
+.footerSection h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.footerSection ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footerSection ul li {
+    margin-bottom: 12px;
+}
+
+.footerSection ul li a {
+    color: #94A3B8;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.footerSection ul li a:hover {
+    color: white;
+}
+
+.footerLogo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.checkmark {
+    background: #2563EB;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.brandName {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.tagline {
+    font-size: 14px;
+    color: #94A3B8;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contactItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #94A3B8;
+}
+
+.footerBottom {
+    max-width: 1280px;
+    margin: 48px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid #334155;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copyright {
+    font-size: 14px;
+    color: #64748B;
+}
+
+.socialIcons {
+    display: flex;
+    gap: 16px;
+}
+
+.socialIcons a {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #334155;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.socialIcons a:hover {
+    background: #2563EB;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .footerContent {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+    }
+}
+
+@media (max-width: 640px) {
+    .footer {
+        padding: 48px 24px 24px;
+    }
+
+    .footerContent {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .footerBottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+}

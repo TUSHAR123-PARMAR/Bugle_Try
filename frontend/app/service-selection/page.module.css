@@ -1,0 +1,196 @@
+.page {
+    background: #F8FAFC;
+    min-height: 100vh;
+    padding: 64px 24px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.badge {
+    display: inline-block;
+    background: #2563EB;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.header h1 {
+    font-size: 42px;
+    font-weight: 800;
+    color: #1E293B;
+    margin-bottom: 16px;
+}
+
+.header>p {
+    font-size: 18px;
+    color: #64748B;
+}
+
+.consultLink {
+    color: #2563EB;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.consultLink:hover {
+    text-decoration: underline;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 64px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    padding: 32px;
+    transition: all 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    border-color: #2563EB;
+}
+
+.cardIcon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.card h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1E293B;
+    margin-bottom: 12px;
+}
+
+.card>p {
+    font-size: 15px;
+    color: #64748B;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    min-height: 48px;
+}
+
+.cardPrice {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2563EB;
+    margin-bottom: 24px;
+}
+
+.cardActions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btnPrimary {
+    display: block;
+    background: #2563EB;
+    color: white;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btnPrimary:hover {
+    background: #1D4ED8;
+}
+
+.btnSecondary {
+    display: block;
+    background: white;
+    color: #2563EB;
+    border: 2px solid #2563EB;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btnSecondary:hover {
+    background: #EFF6FF;
+}
+
+.cta {
+    background: white;
+    border-radius: 16px;
+    padding: 48px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.cta h3 {
+    font-size: 24px;
+    color: #1E293B;
+    margin-bottom: 12px;
+}
+
+.cta p {
+    font-size: 16px;
+    color: #64748B;
+    margin-bottom: 24px;
+}
+
+.ctaBtn {
+    display: inline-block;
+    background: #10B981;
+    color: white;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.ctaBtn:hover {
+    background: #059669;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .page {
+        padding: 32px 16px;
+    }
+
+    .header h1 {
+        font-size: 28px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta {
+        padding: 32px 24px;
+    }
+}

@@ -1,0 +1,304 @@
+.hero {
+    background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%);
+    padding: 80px 48px;
+}
+
+.heroContent {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.badge {
+    display: inline-block;
+    background: #2563EB;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.heroContent h1 {
+    font-size: 48px;
+    font-weight: 800;
+    color: #1E293B;
+    margin-bottom: 24px;
+    line-height: 1.2;
+}
+
+.heroContent>p {
+    font-size: 18px;
+    color: #64748B;
+    line-height: 1.7;
+    margin-bottom: 32px;
+}
+
+.heroCtas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.btnPrimary {
+    background: #2563EB;
+    color: white;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btnPrimary:hover {
+    background: #1D4ED8;
+    transform: translateY(-2px);
+}
+
+.btnSecondary {
+    background: white;
+    color: #2563EB;
+    border: 2px solid #2563EB;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btnSecondary:hover {
+    background: #EFF6FF;
+}
+
+.process {
+    padding: 80px 48px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.sectionHeader {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.sectionHeader h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #1E293B;
+    margin-bottom: 16px;
+}
+
+.sectionHeader>p {
+    font-size: 18px;
+    color: #64748B;
+}
+
+.processGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+}
+
+.processCard {
+    text-align: center;
+    padding: 24px 16px;
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+}
+
+.processNumber {
+    width: 40px;
+    height: 40px;
+    background: #2563EB;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin: 0 auto 16px;
+}
+
+.processCard h3 {
+    font-size: 18px;
+    color: #1E293B;
+    margin-bottom: 8px;
+}
+
+.processCard p {
+    font-size: 14px;
+    color: #64748B;
+    line-height: 1.5;
+}
+
+.pricing {
+    padding: 80px 48px;
+    background: #F8FAFC;
+}
+
+.pricingGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.priceCard {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 28px 20px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.priceCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.priceCard h3 {
+    font-size: 16px;
+    color: #1E293B;
+    margin-bottom: 12px;
+}
+
+.priceAmount {
+    margin-bottom: 8px;
+}
+
+.currency {
+    font-size: 20px;
+    color: #2563EB;
+    vertical-align: top;
+}
+
+.price {
+    font-size: 32px;
+    font-weight: 800;
+    color: #2563EB;
+}
+
+.priceDesc {
+    font-size: 13px;
+    color: #64748B;
+    margin-bottom: 8px;
+}
+
+.sessionCount {
+    font-size: 12px;
+    color: #94A3B8;
+    margin-bottom: 16px;
+}
+
+.btnPrice {
+    display: block;
+    width: 100%;
+    background: #2563EB;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.btnPrice:hover {
+    background: #1D4ED8;
+}
+
+.cta {
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+    padding: 80px 48px;
+    text-align: center;
+    color: white;
+}
+
+.cta h2 {
+    font-size: 36px;
+    color: white;
+    margin-bottom: 16px;
+}
+
+.cta>p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 32px;
+}
+
+.ctaButtons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.btnCtaPrimary {
+    background: white;
+    color: #2563EB;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btnCtaPrimary:hover {
+    background: #F8FAFC;
+    transform: translateY(-2px);
+}
+
+.btnCtaSecondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btnCtaSecondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 1200px) {
+
+    .processGrid,
+    .pricingGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+
+    .hero,
+    .process,
+    .pricing,
+    .cta {
+        padding: 48px 24px;
+    }
+
+    .heroContent h1 {
+        font-size: 32px;
+    }
+
+    .heroCtas,
+    .ctaButtons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .processGrid,
+    .pricingGrid {
+        grid-template-columns: 1fr;
+    }
+}

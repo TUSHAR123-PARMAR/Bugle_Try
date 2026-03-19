@@ -1,0 +1,244 @@
+// Prisma schema for Bugle Learn College Prep Platform
+// Complete database schema with all 10 tables as specified
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// TABLE 1: Parent
+// Store parent/guardian information
+// ============================================
+model Parent {
+  id          String   @id @default(uuid()) @map("parent_id")
+  firstName   String   @map("first_name") @db.VarChar(100)
+  lastName    String   @map("last_name") @db.VarChar(100)
+  email       String   @unique @db.VarChar(255)
+  phone       String   @db.VarChar(20)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  students      Student[]
+  registrations Registration[]
+
+  @@index([email])
+  @@index([createdAt(sort: Desc)])
+  @@map("parent")
+}
+
+// ============================================
+// TABLE 2: Student
+// Store student information linked to parent
+// ============================================
+model Student {
+  id        String   @id @default(uuid()) @map("student_id")
+  parentId  String   @map("parent_id")
+  firstName String   @map("first_name") @db.VarChar(100)
+  lastName  String   @map("last_name") @db.VarChar(100)
+  email     String   @db.VarChar(255)
+  school    String   @db.VarChar(200)
+  grade     String?  @db.VarChar(10) // NULL allowed for consultations
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  parent        Parent         @relation(fields: [parentId], references: [id])
+  registrations Registration[]
+
+  @@index([parentId])
+  @@index([email])
+  @@index([createdAt(sort: Desc)])
+  @@map("student")
+}
+
+// ============================================
+// TABLE 3: Inquiry
+// Store consultation/inquiry requests (separate from registrations)
+// ============================================
+model Inquiry {
+  id              String    @id @default(uuid()) @map("inquiry_id")
+  parentId        String?   @map("parent_id")
+  fullName        String    @map("full_name") @db.VarChar(200)
+  email           String    @db.VarChar(255)
+  phone           String    @db.VarChar(20)
+  inquiryType     String    @default("consultation") @map("inquiry_type") @db.VarChar(50)
+  preferredDate   DateTime? @map("preferred_date") @db.Date
+  preferredTime   String?   @map("preferred_time") @db.VarChar(50)
+  primaryInterest String?   @map("primary_interest") @db.VarChar(100)
+  message         String?   @db.Text
+  status          String    @default("new") @db.VarChar(20)
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  // Relations
+  payments Payment[]
+
+  @@index([status])
+  @@index([createdAt(sort: Desc)])
+  @@index([email])
+  @@map("inquiry")
+}
+
+// ============================================
+// TABLE 4: Service
+// Define available services offered by Bugle Learn
+// ============================================
+model Service {
+  id           String   @id @default(uuid()) @map("service_id")
+  serviceName  String   @unique @map("service_name") @db.VarChar(200)
+  serviceType  String   @unique @map("service_type") @db.VarChar(50)
+  description  String?  @db.Text
+  isActive     Boolean  @default(true) @map("is_active")
+  displayOrder Int?     @map("display_order")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  packages      Package[]
+  registrations Registration[]
+
+  @@map("service")
+}
+
+// ============================================
+// TABLE 5: Package
+// Define pricing packages within each service
+// ============================================
+model Package {
+  id           String   @id @default(uuid()) @map("package_id")
+  serviceId    String   @map("service_id")
+  packageName  String   @map("package_name") @db.VarChar(200)
+  price        Decimal  @db.Decimal(10, 2)
+  description  String?  @db.Text
+  sessionCount Int?     @map("session_count")
+  isActive     Boolean  @default(true) @map("is_active")
+  displayOrder Int?     @map("display_order")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  service       Service        @relation(fields: [serviceId], references: [id])
+  registrations Registration[]
+
+  @@index([serviceId])
+  @@index([isActive])
+  @@map("package")
+}
+
+// ============================================
+// TABLE 6: Registration
+// Store service registrations (not consultations)
+// ============================================
+model Registration {
+  id                  String   @id @default(uuid()) @map("registration_id")
+  parentId            String   @map("parent_id")
+  studentId           String   @map("student_id")
+  serviceId           String   @map("service_id")
+  packageId           String   @map("package_id")
+  packagePrice        Decimal  @map("package_price") @db.Decimal(10, 2) // Snapshot at registration
+  serviceSpecificData Json?    @map("service_specific_data") @db.JsonB
+  parentNotes         String?  @map("parent_notes") @db.Text
+  registrationStatus  String   @default("pending_payment") @map("registration_status") @db.VarChar(20)
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  parent   Parent    @relation(fields: [parentId], references: [id])
+  student  Student   @relation(fields: [studentId], references: [id])
+  service  Service   @relation(fields: [serviceId], references: [id])
+  package  Package   @relation(fields: [packageId], references: [id])
+  payments Payment[]
+
+  @@index([parentId])
+  @@index([studentId])
+  @@index([registrationStatus])
+  @@index([createdAt(sort: Desc)])
+  @@map("registration")
+}
+
+// ============================================
+// TABLE 7: BlockedDate
+// Admin-managed blocked dates for practice tests
+// ============================================
+model BlockedDate {
+  id          String   @id @default(uuid()) @map("blocked_date_id")
+  blockedDate DateTime @unique @map("blocked_date") @db.Date
+  reason      String?  @db.VarChar(200)
+  isActive    Boolean  @default(true) @map("is_active")
+  createdBy   String?  @map("created_by")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([isActive])
+  @@map("blocked_date")
+}
+
+// ============================================
+// TABLE 8: Payment
+// Store payment transaction records
+// ============================================
+model Payment {
+  id                    String   @id @default(uuid()) @map("payment_id")
+  registrationId        String?  @map("registration_id")
+  inquiryId             String?  @map("inquiry_id")
+  stripePaymentIntentId String   @unique @map("stripe_payment_intent_id") @db.VarChar(255)
+  amount                Decimal  @db.Decimal(10, 2)
+  currency              String   @default("USD") @db.Char(3)
+  paymentStatus         String   @map("payment_status") @db.VarChar(20)
+  paymentMethodType     String?  @map("payment_method_type") @db.VarChar(50)
+  billingEmail          String?  @map("billing_email") @db.VarChar(255)
+  errorMessage          String?  @map("error_message") @db.Text
+  createdAt             DateTime @default(now()) @map("created_at")
+  updatedAt             DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  registration Registration? @relation(fields: [registrationId], references: [id])
+  inquiry      Inquiry?      @relation(fields: [inquiryId], references: [id])
+
+  @@index([registrationId])
+  @@index([inquiryId])
+  @@index([paymentStatus])
+  @@index([stripePaymentIntentId])
+  @@index([createdAt(sort: Desc)])
+  @@map("payment")
+}
+
+// ============================================
+// TABLE 9: Coupon (Optional Feature)
+// Admin-managed discount codes
+// ============================================
+model Coupon {
+  id            String   @id @default(uuid()) @map("coupon_id")
+  code          String   @unique @db.VarChar(50)
+  discountType  String   @map("discount_type") @db.VarChar(20)
+  discountValue Decimal  @map("discount_value") @db.Decimal(10, 2)
+  isActive      Boolean  @default(true) @map("is_active")
+  validFrom     DateTime @map("valid_from") @db.Date
+  validTo       DateTime @map("valid_to") @db.Date
+  usageLimit    Int?     @map("usage_limit")
+  timesUsed     Int      @default(0) @map("times_used")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  @@map("coupon")
+}
+
+// ============================================
+// TABLE 10: AdminUser
+// Store admin panel user accounts
+// ============================================
+model AdminUser {
+  id           String    @id @default(uuid()) @map("admin_id")
+  email        String    @unique @db.VarChar(255)
+  passwordHash String    @map("password_hash") @db.VarChar(255)
+  role         String    @default("admin") @db.VarChar(50)
+  isActive     Boolean   @default(true) @map("is_active")
+  lastLoginAt  DateTime? @map("last_login_at")
+  createdAt    DateTime  @default(now()) @map("created_at")
+
+  @@map("admin_user")
+}

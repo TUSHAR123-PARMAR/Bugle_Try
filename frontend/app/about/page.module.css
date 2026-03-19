@@ -1,0 +1,244 @@
+.hero {
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    padding: 100px 48px;
+    color: white;
+}
+
+.heroContent {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.badge {
+    display: inline-block;
+    background: rgba(37, 99, 235, 0.2);
+    color: #60A5FA;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.heroContent h1 {
+    font-size: 48px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 24px;
+    line-height: 1.2;
+}
+
+.heroContent>p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding: 64px 48px;
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+    background: white;
+    margin-top: -40px;
+    position: relative;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.statNumber {
+    font-size: 48px;
+    font-weight: 800;
+    color: #2563EB;
+    margin-bottom: 8px;
+}
+
+.statLabel {
+    font-size: 16px;
+    color: #64748B;
+    font-weight: 500;
+}
+
+.mission {
+    padding: 80px 48px;
+    background: #F8FAFC;
+}
+
+.missionContent {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.mission h2 {
+    font-size: 32px;
+    color: #1E293B;
+    margin-bottom: 24px;
+}
+
+.mission p {
+    font-size: 22px;
+    color: #64748B;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.approach {
+    padding: 80px 48px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.sectionHeader {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.sectionHeader h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #1E293B;
+    margin-bottom: 16px;
+}
+
+.sectionHeader>p {
+    font-size: 18px;
+    color: #64748B;
+}
+
+.approachGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+.approachCard {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 32px;
+    transition: all 0.3s;
+}
+
+.approachCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.approachIcon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.approachCard h3 {
+    font-size: 22px;
+    color: #1E293B;
+    margin-bottom: 12px;
+}
+
+.approachCard p {
+    font-size: 16px;
+    color: #64748B;
+    line-height: 1.6;
+}
+
+.cta {
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+    padding: 80px 48px;
+    text-align: center;
+    color: white;
+}
+
+.cta h2 {
+    font-size: 36px;
+    color: white;
+    margin-bottom: 16px;
+}
+
+.cta>p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 32px;
+}
+
+.ctaButtons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.btnPrimary {
+    background: white;
+    color: #2563EB;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btnPrimary:hover {
+    background: #F8FAFC;
+    transform: translateY(-2px);
+}
+
+.btnSecondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 16px 32px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btnSecondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 1024px) {
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 0;
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .hero,
+    .mission,
+    .approach,
+    .cta {
+        padding: 48px 24px;
+    }
+
+    .heroContent h1 {
+        font-size: 32px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 32px 24px;
+    }
+
+    .statNumber {
+        font-size: 36px;
+    }
+
+    .approachGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .ctaButtons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
